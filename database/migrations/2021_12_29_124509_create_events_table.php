@@ -23,6 +23,7 @@ class CreateEventsTable extends Migration
             $table->string('email');
             $table->longText('description');
             $table->string('image');
+            $table->string('images');
 
         });
     }

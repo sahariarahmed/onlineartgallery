@@ -10,11 +10,11 @@ class ArtistsController extends Controller
 {
     public function index(){
         $data=Artist::all();
-        return view('pages.artists.artists',compact('data'));    
+        return view('pages.artists.artists',compact('data'));
     }
 
     public function createArtists(){
-        
+
         return view('pages.artists.createArtists');
     }
 
@@ -26,9 +26,9 @@ class ArtistsController extends Controller
             'email'=>'required',
             'contact'=>'required',
             'country'=>'required',
-        ]);    
+        ]);
         $image_name=null;
-                 
+
                 if($data->hasFile('image'))
                 {
                     $image_name=date('Ymdhis') .'.'. $data->file('image')->getClientOriginalExtension();
@@ -36,7 +36,7 @@ class ArtistsController extends Controller
                     $data->file('image')->storeAs('/artists',$image_name);
                 }
 
-        Artist::create([            
+        Artist::create([
             'fname'=>$data->fname,
             'lname'=>$data->lname,
             'email'=>$data->email,
@@ -44,7 +44,7 @@ class ArtistsController extends Controller
             'country'=>$data->country,
             'city'=>$data->city,
             'image'=>$image_name,
-            
+
         ]);
 
         return redirect()->route('artists')->with('success','Artist created successfully.');
@@ -76,5 +76,11 @@ class ArtistsController extends Controller
         $artist=Artist::find($updated);
         $artist->update(request()->all());
         return redirect()->route('artists')->with('update', 'Updated Successfully. ');
+    }
+
+    public function viewArtist($viewid)
+    {
+        $view=Artist::find($viewid);
+        return view('website.viewartist', compact('view'));
     }
 }

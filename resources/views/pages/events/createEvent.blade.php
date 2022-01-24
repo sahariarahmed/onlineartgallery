@@ -35,6 +35,11 @@
         <input name="image" type="file" class="form-control-file" id="exampleFormControlFile1" multiple required>
       </div>
 
+      <div class="form-group">
+        <label for="exampleFormControlFile1">Multiple Image</label>
+        <input name="images[]" type="file" class="form-control-file" id="exampleFormControlFile1" multiple>
+      </div>
+
 
       <button type="submit" class="btn btn-primary">Submit</button>
 

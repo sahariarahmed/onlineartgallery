@@ -54,6 +54,16 @@ class EventsController extends Controller
 
                     $data->file('image')->storeAs('/events',$image_name);
                 }
+                
+                $images=array();
+                if($files=$data->file('images')){
+                foreach($files as $file){
+                $name=$file->getClientOriginalName();
+                $file->storeAs('/events',$name);
+                $images[]=$name;
+                }
+        }
+
 
                 Event::create([
                     'title'=>$data->title,
@@ -63,6 +73,8 @@ class EventsController extends Controller
                     'email'=>$data->email,
                     'description'=>$data->description,
                     'image'=>$image_name,
+                    'images'=>implode("|",$images),
+
                 ]);
                 return redirect()->route('events')->with('success','Event created successfully.');
     }

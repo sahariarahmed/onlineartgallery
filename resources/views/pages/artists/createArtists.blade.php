@@ -24,9 +24,9 @@
 
     <div class="form-group">
     <label for="inputContact">Contact No.</label>
-    <input name="contact" type="number" class="form-control" id="inputContact" placeholder="+880" required>
+    <input name="contact" type="number" class="form-control" id="inputContact" required>
     </div>
-  
+
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputCountry">Country</label>
@@ -36,16 +36,16 @@
     <div class="form-group col-md-6">
       <label for="inputCity">City</label>
       <input name="city" type="text" class="form-control" id="inputCity">
-    </div> 
+    </div>
   </div>
-  
+
     <div class="form-group">
       <label for="exampleFormControlFile1">Add Image</label>
       <input name="image" type="file" class="form-control-file" id="exampleFormControlFile1">
     </div>
-  
 
-  
+
+
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 

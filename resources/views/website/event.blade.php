@@ -24,6 +24,7 @@
 @extends('website.welcome')
 @section('content')
 
+
 <div class="card-containers">
 @foreach ($data as $item)
 

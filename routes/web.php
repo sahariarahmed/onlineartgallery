@@ -16,10 +16,11 @@ Route::get('/events', [EventsController::class, 'wEvents'])->name('showevents');
 Route::get('/events/{view_id}', [EventsController::class, 'viewevent'])->name('show.event');
 
 Route::get('/courses', [CoursesController::class, 'wCourses'])->name('showcourses');
-Route::get('/details/{details_id}', [CoursesController::class, 'viewCourses'])->name('view.course');
+Route::get('/cdetails/{details_id}', [CoursesController::class, 'viewCourses'])->name('view.course');
 Route::post('/enroll/{details_id}', [CoursesController::class, 'enroll'])->name('enroll.course');
 
 Route::get('/artists', [ArtistsController::class, 'wArtists'])->name('showartists');
+Route::get('/adetails/{view_id}', [ArtistsController::class, 'viewArtist'])->name('view.artist');
 
 Route::get('/blog', [BlogController::class, 'wBlog'])->name('showblog');
 Route::get('/blog/{view_id}', [BlogController::class, 'viewblog'])->name('view.blog');
