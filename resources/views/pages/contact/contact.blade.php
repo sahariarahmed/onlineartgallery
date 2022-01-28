@@ -1,4 +1,5 @@
 @extends('welcome')
+
 @section('content')
 
 <table class="table">
@@ -10,6 +11,7 @@
       <th scope="col">Occupation</th>
       <th scope="col">Message</th>
       <th scope="col">Action</th>
+
     </tr>
   </thead>
   <tbody>
@@ -24,16 +26,19 @@
       <td>{{$item->message}}</td>
       <td>
             @if ($item->status == 'active')
-              <button class="btn btn-outline-success" type="submit" name="status" value="active">Responded</button>
+              <button class="btn btn-outline-success" type="submit" name="status" value="active">Responsed</button>
             @else
               <button class="btn btn-outline-warning" type="submit" name="status" value="block">Response</button>
             @endif
-
-            <a class='btn btn-outline-danger' href="{{route('contact.delete',$item->id)}}">DELETE</a>
+          <a class='btn btn-outline-danger' href="{{route('contact.delete',$item->id)}}">DELETE</a>
       </td>
+
+
     </tr>
 @endforeach
 
   </tbody>
 </table>
+
+
 @endsection

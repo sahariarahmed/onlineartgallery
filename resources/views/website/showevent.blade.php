@@ -23,7 +23,8 @@
 .cards {
     box-shadow: 0 4px 8px 0 rgba(247, 247, 247, 0.829);
     transition: 0.3s;
-    width: 500px;
+    width: 100%;
+    margin-right: 20px;
     border-radius: 10px;
     height: 445px;
     background: rgba(41, 37, 37, 0.897);
@@ -34,6 +35,7 @@
 }
   .card-containers {
     display: grid;
+    margin-right: 2rem;
     grid-template-columns: 33.33% 33.33% 33.33%;
     grid-gap: 15px;
 }

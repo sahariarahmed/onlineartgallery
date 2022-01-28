@@ -11,6 +11,8 @@ use App\Http\Controllers\UserController;
 Route::get('/', function () {
     return view('website.home');
 });
+Route::get('/gallery', [GalleryController::class, 'showCats'])->name('show.cats');
+Route::get('/gallery/{gallery_id}', [GalleryController::class, 'showCat'])->name('show.cat');
 
 Route::get('/events', [EventsController::class, 'wEvents'])->name('showevents');
 Route::get('/events/{view_id}', [EventsController::class, 'viewevent'])->name('show.event');
@@ -66,6 +68,7 @@ Route::group(['prefix'=>'artists'], function(){
     Route::get('/update/{update_id}', [ArtistsController::class, 'updateArtist'])->name('update.artist');
     Route::patch('/updated/{updated_id}', [ArtistsController::class, 'updatedArtist'])->name('updated.artist');
 });
+
 Route::group(['prefix'=>'blog'], function(){
     Route::get('/', [BlogController::class, 'index'])->name('blog');
     Route::get('/create', [BlogController::class, 'createBlog'])->name('blog.create');
@@ -86,16 +89,17 @@ Route::group(['prefix'=>'events'], function(){
     Route::patch('/updated/{updated_id}', [EventsController::class, 'updatedEvent'])->name('updated.event');
     Route::get('/list', [EventsController::class, 'list'])->name('event.list');
 
-
-
-
 });
 
 Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery');
+Route::get('/create', [GalleryController::class, 'createCat'])->name('create.cat');
+Route::post('/store', [GalleryController::class, 'storeCat'])->name('store.cat');
+Route::get('/addimage/{gallery_id}', [GalleryController::class, 'addimage'])->name('add.image');
+Route::post('/store/{gallery_id}', [GalleryController::class, 'storeImage'])->name('store.image');
+
 
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::get('/delete/{blog_id}', [ContactController::class, 'deletecontact'])->name('contact.delete');
-
 
 
 Route::get('/list', [UserController::class, 'list'])->name('list');

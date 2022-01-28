@@ -13,6 +13,7 @@
   }
     .card-containers {
       display: grid;
+      margin-right: 2rem;
       grid-template-columns: 33.33% 33.33% 33.33%;
       grid-gap: 15px;
 
@@ -40,8 +41,8 @@
 				<p>{{$item->country}}</p>
 				<p>{{$item->email}}</p>
 			<br><br><br>
-        </a>
-			</div>
+    </a>
+</div>
 
 @endforeach
 </div>

@@ -36,11 +36,11 @@
 <!-- Home Section -->
 
 
-     
+
 
        @yield('content')
 
-     
+
 
 <!-- Footer Section -->
 
@@ -63,18 +63,8 @@
                     <p><i class="fa fa-save"></i> sahariarahmed@gmail.com </p>
                </div>
 
-               <div class="clearfix col-md-12 col-sm-12">
-                    <hr>
-               </div>
 
-               <div class="col-md-12 col-sm-12">
-                    <ul class="social-icon ml-lg-3">
-                         <li><a href="https://fb.com/" class="fa fa-facebook"></a></li>
-                         <li><a href="https://twitter.com/" class="fa fa-twitter"></a></li>
-                         <li><a href="https://instagram.com/" class="fa fa-instagram"></a></li>
-                    </ul>
-               </div>
-               
+
           </div>
      </div>
 </footer>

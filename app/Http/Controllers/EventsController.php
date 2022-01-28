@@ -47,36 +47,33 @@ class EventsController extends Controller
             'image'=>'required',
         ]);
 
-        $image_name=null;
-                if($data->hasFile('image'))
-                {
-                    $image_name=date('Ymdhis') .'.'. $data->file('image')->getClientOriginalExtension();
+            $image_name=null;
+            if($data->hasFile('image'))
+            {
+                $image_name=date('Ymdhis') .'.'. $data->file('image')->getClientOriginalExtension();
+                $data->file('image')->storeAs('/events',$image_name);
+            }
 
-                    $data->file('image')->storeAs('/events',$image_name);
-                }
-                
-                $images=array();
-                if($files=$data->file('images')){
-                foreach($files as $file){
-                $name=$file->getClientOriginalName();
-                $file->storeAs('/events',$name);
-                $images[]=$name;
-                }
-        }
+            $images=array();
+            if($files=$data->file('images')){
+            foreach($files as $file){
+            $name=$file->getClientOriginalName();
+            $file->storeAs('/events',$name);
+            $images[]=$name;
+            }
+    }
+            Event::create([
+                'title'=>$data->title,
+                'sdate'=>$data->sdate,
+                'edate'=>$data->edate,
+                'name'=>$data->name,
+                'email'=>$data->email,
+                'description'=>$data->description,
+                'image'=>$image_name,
+                'images'=>implode("|",$images),
 
-
-                Event::create([
-                    'title'=>$data->title,
-                    'sdate'=>$data->sdate,
-                    'edate'=>$data->edate,
-                    'name'=>$data->name,
-                    'email'=>$data->email,
-                    'description'=>$data->description,
-                    'image'=>$image_name,
-                    'images'=>implode("|",$images),
-
-                ]);
-                return redirect()->route('events')->with('success','Event created successfully.');
+            ]);
+            return redirect()->route('events')->with('success','Event created successfully.');
     }
 
     public function detailsEvent($detailsid){
