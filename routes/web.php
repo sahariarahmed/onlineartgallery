@@ -26,6 +26,11 @@ Route::get('/adetails/{view_id}', [ArtistsController::class, 'viewArtist'])->nam
 
 Route::get('/blog', [BlogController::class, 'wBlog'])->name('showblog');
 Route::get('/blog/{view_id}', [BlogController::class, 'viewblog'])->name('view.blog');
+Route::post('/store/{blog_id}', [BlogController::class, 'storeComment'])->name('comment.store');
+Route::get('/like/{blog_id}', [BlogController::class, 'like'])->name('like.store');
+
+
+
 
 Route::get('/contact', [ContactController::class, 'wContact'])->name('showcontact');
 Route::post('/contact/store', [ContactController::class, 'storeContact'])->name('contact.store');
@@ -96,10 +101,16 @@ Route::get('/create', [GalleryController::class, 'createCat'])->name('create.cat
 Route::post('/store', [GalleryController::class, 'storeCat'])->name('store.cat');
 Route::get('/addimage/{gallery_id}', [GalleryController::class, 'addimage'])->name('add.image');
 Route::post('/store/{gallery_id}', [GalleryController::class, 'storeImage'])->name('store.image');
+Route::get('/delete/{gallery_id}', [GalleryController::class, 'deleteCat'])->name('cat.delete');
+Route::get('/update/{update_id}', [GalleryController::class, 'updateCat'])->name('update.cat');
+Route::patch('/updated/{updated_id}', [GalleryController::class, 'updatedCat'])->name('updated.cat');
+
 
 
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::get('/delete/{blog_id}', [ContactController::class, 'deletecontact'])->name('contact.delete');
+Route::patch('/response/{id}', [ContactController::class, 'response'])->name('response');
+
 
 
 Route::get('/list', [UserController::class, 'list'])->name('list');

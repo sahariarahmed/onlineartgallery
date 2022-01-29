@@ -1,7 +1,6 @@
 @extends('website.welcome')
-
-
 @section('content')
+
 @if(session()->has('login'))
     <p class="alert alert-success">
         {{session()->get('login')}}
@@ -31,4 +30,5 @@
          </div>
     </div>
 </section>
+
 @endsection

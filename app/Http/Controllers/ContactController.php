@@ -45,5 +45,11 @@ class ContactController extends Controller
         return redirect()->back()->with('delete','Event deleted successfully.');
     }
 
+    public function response($id, Request $req){
+        $user = Contact::where('id',$id);
+        $user->update(['status'=>request('status')]);
+        return redirect()->back();
+    }
+
 
 }

@@ -10,4 +10,10 @@ class Blog extends Model
     use HasFactory;
     protected $table="blog";
     protected $guarded=[];
+
+
+    public function liked()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }

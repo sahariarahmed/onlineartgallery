@@ -32,13 +32,11 @@
   </style>
 
 @extends('website.welcome')
-
-
 @section('content')
 
 <div class="container">
     <div class="row text-center">
-        <h1>Categories of Arts</h1>
+        <h2><u>Categories of Arts</u></h2>
     </div>
 <br>
 
@@ -52,7 +50,7 @@
         </div>
     <img style="border-radius: 15px;" width="340px;" height="340px;" src={{url('/uploads/galleries/'.$item->image)}} class="card-img" alt="arts">
 
-        {{-- <h4>[{{$item->details}}]</h4> --}}
+
 
     </a>
     </div>

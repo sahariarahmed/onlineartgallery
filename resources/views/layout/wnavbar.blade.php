@@ -18,7 +18,7 @@
                      @endif
                     @endauth
 
-                   {{-- <li class="active"><a href="#">Gallery</a></li> --}}
+                   <li><a href="{{route('show.cats')}}">Arts</a></li>
                    <li><a href="{{route('showevents')}}">Events</a></li>
                    <li><a href="{{route('showcourses')}}">Courses</a></li>
                    <li><a href="{{route('showartists')}}">Artists</a></li>

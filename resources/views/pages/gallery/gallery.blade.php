@@ -7,6 +7,14 @@
         {{session()->get('success')}}
     </p>
 @endif
+
+@if(session()->has('update'))
+    <p class="alert alert-success">
+        {{session()->get('update')}}
+    </p>
+@endif
+
+
 <a href={{route('create.cat')}} class="btn btn-outline-success">Create a New Category</a>
 
 
@@ -35,8 +43,8 @@
 
         <td>
           <a class='btn btn-primary' href="{{route('add.image',$item->id)}}">Add image</a>
-          {{-- <a class='btn btn-danger' href="{{route('delete.event',$item->id)}}">DELETE</a> --}}
-          {{-- <a class='btn btn-warning' href="{{route('update.event',$item->id)}}">UPDATE</a> --}}
+          <a class='btn btn-danger' href="{{route('cat.delete',$item->id)}}">DELETE</a>
+          <a class='btn btn-warning' href="{{route('update.cat',$item->id)}}">UPDATE</a>
         </td>
 
       </tr>

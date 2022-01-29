@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
+use App\Models\Comment;
+use Illuminate\Support\Facades\Auth;
 
 class BlogController extends Controller
 {
@@ -12,7 +14,7 @@ class BlogController extends Controller
         $data=Blog::all();
         return view('pages.blogs.blog',compact('data'));
     }
-    
+
     public function createBlog(){
 
         return view('pages.blogs.createBlog');
@@ -35,10 +37,10 @@ class BlogController extends Controller
                     $data->file('image')->storeAs('/blog',$image_name);
                 }
 
-        Blog::create([            
+        Blog::create([
             'title'=>$data->title,
             'moto'=>$data->moto,
-            'fullname'=>$data->fullname, 
+            'fullname'=>$data->fullname,
             'email'=>$data->email,
             'description'=>$data->description,
             'image'=>$image_name,
@@ -77,7 +79,42 @@ class BlogController extends Controller
 
     public function viewblog($viewid){
         $view=Blog::find($viewid);
-        return view('website.viewblog', compact('view'));
+        $comments=Comment::where('blog_id',$viewid)->get();
+        return view('website.viewblog', compact('view','comments'));
     }
+
+    public function storeComment(Request $data, $blog_id)
+    {
+
+        Comment::create([
+            'blog_id'=>$blog_id,
+            'user_id'=>Auth::user()->id,
+            'body'=>$data->body,
+        ]);
+        return redirect()->back();
+    }
+
+
+    public function like($post_id)
+    {
+        $likes = Blog::find($post_id);
+        if ($likes->liked()->where('user_id',Auth::user()->id)->exists()) {
+            $likes->liked()->detach(Auth::user()->id);
+            return redirect()->back();
+        }
+        else
+        {
+            $likes->liked()->attach(Auth::user()->id);
+            if (Auth::user()->id!=$likes->user_id) {
+
+            }
+            return redirect()->back();
+        }
+    }
+
+
+
+
+
 
 }

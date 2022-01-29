@@ -57,7 +57,7 @@ class GalleryController extends Controller
             ]);
             }
         }
-        return redirect()->back();
+        return redirect()->route('gallery')->with('success','Images updated successfully.');
     }
 
     public function showCats()
@@ -69,7 +69,25 @@ class GalleryController extends Controller
     public function showCat($gallery_id)
     {
         $images=Image::where('gallery_id', $gallery_id)->get();
-        return view('website.showcat', compact('images'));
+        $view=Gallery::find($gallery_id);
+        return view('website.showcat', compact('images', 'view'));
+    }
+
+    public function deleteCat($delcat){
+        Gallery::find($delcat)->delete();
+        return redirect()->back()->with('delete','Blog deleted successfully.');
+    }
+
+    public function updateCat($update){
+        $cat=Gallery::find($update);
+
+        return view('pages.gallery.updateGallery', compact('cat'));
+    }
+
+    public function updatedCat($updated){
+        $cat=Gallery::find($updated);
+        $cat->update(request()->all());
+        return redirect()->route('gallery')->with('update', 'Updated Successfully. ');
     }
 
 
