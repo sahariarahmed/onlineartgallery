@@ -29,6 +29,10 @@
         <input name="email" type="email" class="form-control" value="{{$event->email}}" id="inputEmail4" placeholder="Email" required>
       </div>
       <div class="form-group">
+        <label for="inputEmail4">Place</label>
+        <input name="place" type="email" class="form-control" value="{{$event->place}}" id="inputEmail4" placeholder="place" required>
+      </div>
+      <div class="form-group">
         <label for="formGroupExampleInput2">Event description</label>
         <input name="description" type="text" class="form-control" value="{{$event->description}}" id="formGroupExampleInput2"  placeholder="Describe here"  autocomplete="off" spellcheck="false" required>
       </div>

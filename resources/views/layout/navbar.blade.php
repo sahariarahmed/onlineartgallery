@@ -11,14 +11,17 @@
             <ul class="navbar-nav ml-lg-auto">
                 <li class="nav-item">
                     <a href="{{route('gallery')}}" class="nav-link smoothScroll">Gallery</a>
-                </li>               
+                </li>
 
                 <li class="nav-item">
                     <a href="{{route('events')}}" class="nav-link smoothScroll">Events</a>
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{route('artists')}}" class="nav-link smoothScroll">Artists</a>
+                    <a href="{{route('artists')}}" class="nav-link smoothScroll">Artists
+                        @if (Auth::user()->unreadnotifications()->count() > 0)
+                        ({{ Auth::user()->unreadnotifications()->count() }})
+                    @endif</a>
                 </li>
 
                 <li class="nav-item">
@@ -41,7 +44,7 @@
             <li><a class="btn btn-info" href="{{route('logout')}}">Logout</a></li>
 
 
-            
+
         </div>
 
     </div>

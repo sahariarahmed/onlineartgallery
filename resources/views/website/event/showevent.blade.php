@@ -27,7 +27,7 @@
     margin-right: 20px;
     border-radius: 10px;
     height: 445px;
-    background: rgba(41, 37, 37, 0.897);
+    background: rgba(255, 252, 252, 0.897);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -39,6 +39,15 @@
     grid-template-columns: 33.33% 33.33% 33.33%;
     grid-gap: 15px;
 }
+    a{
+        text-decoration: none;
+        color: black;
+    }
+    a:hover{
+        text-decoration: none;
+        color: rgb(255, 244, 244);
+        transform: scale(1.2);
+    }
 </style>
 
 
@@ -54,6 +63,7 @@
 <div class="container">
 <h4>This Event has been hosted by "<u>{{$view->name}}</u>".</h4><br><br>
 <h3>Event time: <b><u>{{$view->sdate}}</u></b> to <b><u>{{$view->edate}}</u></b>.</h3>
+<h5>This event is helding at "{{$view->place}}"</h5>
 <br><br>
 <h2>Details:</h2>
 <div class="h10">{{$view->description}} </div><br><br>
@@ -62,9 +72,9 @@
 <div class="card-containers">
 @foreach (explode('|', $view->images) as $image)
 <div class="cards">
-
+<a>
 <img style="height:100%; width:100%" src={{url('/uploads/events/'.$image)}} alt="event">
-
+</a>
 </div>
  @endforeach
 </div>

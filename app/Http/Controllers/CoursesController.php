@@ -52,7 +52,7 @@ class CoursesController extends Controller
 
     public function wCourses(){
         $data=Course::all();
-        return view ('website.courses',['data'=>$data]);
+        return view ('website.course.courses',['data'=>$data]);
     }
 
 
@@ -83,7 +83,7 @@ class CoursesController extends Controller
         $rule = Enroll::where('user_id',Auth::user()->id)
         ->where('course_id',$detailsid)
         ->exists();
-        return view('website.viewcourse',compact('course','rule'));
+        return view('website.course.viewcourse',compact('course','rule'));
     }
     public function enroll($course_id)
     {

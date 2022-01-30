@@ -13,6 +13,8 @@ Route::get('/', function () {
 });
 Route::get('/gallery', [GalleryController::class, 'showCats'])->name('show.cats');
 Route::get('/gallery/{gallery_id}', [GalleryController::class, 'showCat'])->name('show.cat');
+Route::get('/upload', [GalleryController::class, 'upload'])->name('upload.cat');
+
 
 Route::get('/events', [EventsController::class, 'wEvents'])->name('showevents');
 Route::get('/events/{view_id}', [EventsController::class, 'viewevent'])->name('show.event');
@@ -23,6 +25,10 @@ Route::post('/enroll/{details_id}', [CoursesController::class, 'enroll'])->name(
 
 Route::get('/artists', [ArtistsController::class, 'wArtists'])->name('showartists');
 Route::get('/adetails/{view_id}', [ArtistsController::class, 'viewArtist'])->name('view.artist');
+Route::get('/applyartist', [ArtistsController::class, 'applyArtist'])->name('apply.artist');
+Route::post('/applyartist/store', [ArtistsController::class, 'storeApply'])->name('apply.artist.store');
+Route::post('/artist/approve/{id}', [ArtistsController::class, 'artistApprove'])->name('apply.artist.approve');
+
 
 Route::get('/blog', [BlogController::class, 'wBlog'])->name('showblog');
 Route::get('/blog/{view_id}', [BlogController::class, 'viewblog'])->name('view.blog');
@@ -43,6 +49,17 @@ Route::post('/registration/store', [UserController::class, 'regStore'])->name('s
 Route::get('/login', [UserController::class, 'login'])->name('login');
 Route::post('/login/store', [UserController::class, 'loginStore'])->name('store.login');
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+
+
+// <!-- ARTIST -->
+Route::get('artist/create', [BlogController::class, 'createBlog'])->name('artist.blog.create');
+Route::post('/store', [BlogController::class, 'storeBlog'])->name('blog.store');
+
+Route::get('create/blog/artist', [ArtistsController::class, 'createBlogs'])->name('artistblog.create');
+Route::get('viewblog/artist', [BlogController::class, 'artistblogshow'])->name('artistblogcreate');
+Route::get('showblog/artist', [BlogController::class, 'artistblogshow'])->name('artist.blog.list');
+
+
 
 
 
@@ -77,7 +94,6 @@ Route::group(['prefix'=>'artists'], function(){
 Route::group(['prefix'=>'blog'], function(){
     Route::get('/', [BlogController::class, 'index'])->name('blog');
     Route::get('/create', [BlogController::class, 'createBlog'])->name('blog.create');
-    Route::post('/store', [BlogController::class, 'storeBlog'])->name('blog.store');
     Route::get('/delete/{blog_id}', [BlogController::class, 'deleteBlog'])->name('blog.delete');
     Route::get('/details/{details_id}', [BlogController::class, 'detailsBlog'])->name('blog.details');
     Route::get('/update/{update_id}', [BlogController::class, 'updateBlog'])->name('update.blog');

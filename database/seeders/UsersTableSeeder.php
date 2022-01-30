@@ -17,9 +17,9 @@ class UsersTableSeeder extends Seeder
         User::create(
             [
                 'role'=>'admin',
-                'name'=>'redborn',
-                'email'=>'a@a.a',
-                'password'=>bcrypt('123'),
+                'name'=>'admin',
+                'email'=>'admin@gmail.com',
+                'password'=>bcrypt('123456'),
             ]);
     }
 }

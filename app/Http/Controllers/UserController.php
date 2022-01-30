@@ -14,6 +14,12 @@ class UserController extends Controller
 
     public function regStore(Request $data){
 
+        $data->validate([
+            'name'=>'required',
+            'email' => 'email:rfc,dns,strict,filter',
+            'password'=>'required',
+        ]);
+
         User::create([
             'name'=>$data->name,
             'email'=>$data->email,
@@ -29,7 +35,6 @@ class UserController extends Controller
 
     public function loginStore(Request $data){
 
-        // dd($data->all());
         if (Auth::attempt(['email'=>$data->email, 'password'=>$data->password])){
             if (Auth::user()->status=='block') {
                 auth()->logout(Auth::user());
@@ -42,7 +47,6 @@ class UserController extends Controller
                  return redirect('/')->with('login', 'Successfully logged in. ');
             }
         }
-
         else{
             return redirect()->back()->with('error', 'Sorry, wrong Email or Password. Try Again! ');
         }

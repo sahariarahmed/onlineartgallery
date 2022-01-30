@@ -10,6 +10,7 @@
   <p><b>Starting Date:</b>   {{$details->sdate}}</p>
   <p><b>Ending Date:</b>       {{$details->edate}}</p>
   <p><b>Event Owner:</b>     {{$details->name}}</p>
+  <p><b>Event place:</b>     {{$details->place}}</p>
   <p><b>Email:</b>     {{$details->email}}</p>
   <p><b>Description: </b>       {{$details->description}}</p>
 

@@ -21,6 +21,7 @@ class CreateEventsTable extends Migration
             $table->string('edate');
             $table->string('name');
             $table->string('email');
+            $table->string('place');
             $table->longText('description');
             $table->string('image');
             $table->string('images');

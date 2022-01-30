@@ -43,6 +43,7 @@ class EventsController extends Controller
             'edate'=>'required',
             'name'=>'required',
             'email'=>'required',
+            'place'=>'required',
             'description'=>'required',
             'image'=>'required',
         ]);
@@ -68,6 +69,7 @@ class EventsController extends Controller
                 'edate'=>$data->edate,
                 'name'=>$data->name,
                 'email'=>$data->email,
+                'place'=>$data->place,
                 'description'=>$data->description,
                 'image'=>$image_name,
                 'images'=>implode("|",$images),
@@ -106,6 +108,7 @@ class EventsController extends Controller
                     'edate'=>$request->edate,
                     'name'=>$request->name,
                     'email'=>$request->email,
+                    'place'=>$request->place,
                     'description'=>$request->description,
                     'image'=>$image_name,
         ]);
@@ -114,13 +117,13 @@ class EventsController extends Controller
 
     public function wEvents(){
         $data=Event::all();
-        return view('website.event', compact('data'));
+        return view('website.event.event', compact('data'));
 
     }
     public function viewevent($viewid)
     {
         $view=Event::find($viewid);
-        return view('website.showevent', compact('view'));
+        return view('website.event.showevent', compact('view'));
     }
 
 

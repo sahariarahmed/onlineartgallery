@@ -33,8 +33,8 @@
 
 @foreach ($comments as $item)
 
-    <p>{{$item->user->name}} {{$item->body}}</p>
-    <p>{{$item->created_at}}</p>
+    <p><b>{{$item->user->name}}</b>: {{$item->body}}</p>
+    <p>(updated at=>{{$item->created_at}})</p>
 
 @endforeach
 

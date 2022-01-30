@@ -1,3 +1,15 @@
+<style>
+    a{
+        text-decoration: none;
+        color: black;
+    }
+    a:hover{
+        text-decoration: none;
+        color: black;
+        transform: scale(1.2);
+    }
+</style>
+
 @extends('website.welcome')
 @section('content')
 <div class="container">
@@ -10,6 +22,7 @@
 @foreach ($images as $item)
 
 <img style="border-radius: 5px;" width="370px;" height="340px;" src={{url('/uploads/'.$item->image)}} class="card-img" alt="arts">
+
 
 @endforeach
 

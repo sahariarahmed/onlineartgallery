@@ -144,14 +144,14 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-user"></i></span>
                         </div>
-                        <input name="email" type="text" class="form-control" placeholder="username/email">
+                        <input name="email" type="text" class="form-control" placeholder="username/email" required>
 
                     </div>
                     <div class="input-group form-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-key"></i></span>
                         </div>
-                        <input name="password" type="password" class="form-control" placeholder="password">
+                        <input name="password" type="password" class="form-control" placeholder="password" minlength="6" required>
                     </div>
                     {{-- <div class="row align-items-center remember">
                         <input type="checkbox">Remember Me

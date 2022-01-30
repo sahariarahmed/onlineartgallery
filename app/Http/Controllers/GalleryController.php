@@ -63,14 +63,14 @@ class GalleryController extends Controller
     public function showCats()
         {
             $data=Gallery::all();
-            return view('website.gallery', compact('data'));
+            return view('website.gallery.gallery', compact('data'));
         }
 
     public function showCat($gallery_id)
     {
         $images=Image::where('gallery_id', $gallery_id)->get();
         $view=Gallery::find($gallery_id);
-        return view('website.showcat', compact('images', 'view'));
+        return view('website.gallery.showcat', compact('images', 'view'));
     }
 
     public function deleteCat($delcat){
@@ -88,6 +88,11 @@ class GalleryController extends Controller
         $cat=Gallery::find($updated);
         $cat->update(request()->all());
         return redirect()->route('gallery')->with('update', 'Updated Successfully. ');
+    }
+
+    public function upload()
+    {
+        return view('website.gallery.uploadCat');
     }
 
 

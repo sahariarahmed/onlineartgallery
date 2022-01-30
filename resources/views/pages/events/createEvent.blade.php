@@ -27,6 +27,10 @@
         <input name="email" type="email" class="form-control" id="inputEmail4" placeholder="Email" required>
       </div>
       <div class="form-group">
+        <label for="inputEmail4">Place</label>
+        <input name="place" type="text" class="form-control" id="inputEmail4" placeholder="Add place here" required>
+      </div>
+      <div class="form-group">
         <label for="formGroupExampleInput2">Event description</label>
         <textarea input name="description" type="text" class="form-control" id="formGroupExampleInput2"  placeholder="Describe here" autocomplete="off" spellcheck="false" required></textarea>
       </div>

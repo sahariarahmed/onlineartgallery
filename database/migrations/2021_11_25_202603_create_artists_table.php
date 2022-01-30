@@ -16,13 +16,13 @@ class CreateArtistsTable extends Migration
         Schema::create('artists', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('fname');
-            $table->string('lname');
-            $table->string('email');
+            $table->string('user_id');
             $table->double('contact');
             $table->string('country');
             $table->string('city');
-            $table->string('image')->nullable();
+            $table->string('image');
+            $table->string('pdf');
+            $table->string('status')->default('pending');
         });
     }
 

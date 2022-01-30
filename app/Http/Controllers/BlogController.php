@@ -38,7 +38,9 @@ class BlogController extends Controller
                 }
 
         Blog::create([
+            'user_id'=>Auth::user()->id,
             'title'=>$data->title,
+            'moto'=>$data->moto,
             'moto'=>$data->moto,
             'fullname'=>$data->fullname,
             'email'=>$data->email,
@@ -47,12 +49,18 @@ class BlogController extends Controller
 
 
         ]);
-        return redirect()->route('blog')->with('success','Blog created successfully.');
+        if(Auth::user()->role=='admin'){
+            return redirect()->route('blog')->with('success','Blog created successfully.');
+        }
+        else{
+            return redirect()->route('artistblogcreate')->with('success','Blog created successfully.');
+        }
+
 
     }
     public function wBlog(){
         $data=Blog::all();
-        return view ('website.blog',['data'=>$data]);
+        return view ('website.blog.blog',['data'=>$data]);
     }
 
     public function deleteBlog($delblog){
@@ -80,7 +88,7 @@ class BlogController extends Controller
     public function viewblog($viewid){
         $view=Blog::find($viewid);
         $comments=Comment::where('blog_id',$viewid)->get();
-        return view('website.viewblog', compact('view','comments'));
+        return view('website.blog.viewblog', compact('view','comments'));
     }
 
     public function storeComment(Request $data, $blog_id)
@@ -111,6 +119,18 @@ class BlogController extends Controller
             return redirect()->back();
         }
     }
+
+    public function artistblogshow()
+    {
+        $data=Blog::where('user_id', Auth::user()->id)->get();
+        return view('website.blog.showartistBlog', compact('data'));
+    }
+
+
+
+
+
+
 
 
 

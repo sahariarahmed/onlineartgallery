@@ -48,6 +48,7 @@
         <th scope="col">Image</th>
         <th scope="col">Event title</th>
         <th scope="col">Event Owner</th>
+        <th scope="col">Place</th>
         <th scope="col">Action</th>
 
       </tr>
@@ -63,6 +64,7 @@
 
         <td>{{$item->title}}</td>
         <td>{{$item->name}}</td>
+        <td>{{$item->place}}</td>
 
         <td>
           <a class='btn btn-primary' href="{{route('details.event',$item->id)}}">DETAILS</a>
