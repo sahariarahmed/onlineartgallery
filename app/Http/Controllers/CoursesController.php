@@ -20,7 +20,12 @@ class CoursesController extends Controller
     }
 
     public function createCourse(){
+        if(Auth::user()->role=='admin'){
         return view('pages.courses.createCourses');
+        }
+        else{
+            return view('website.course.createartistCourse');
+        }
     }
 
     public function storeCourse(Request $data){
@@ -40,13 +45,18 @@ class CoursesController extends Controller
                 }
 
         Course::create([
+            'user_id'=>Auth::user()->id,
             'name'=>$data->name,
             'price'=>$data->price,
             'details'=>$data->details,
             'image'=>$image_name,
         ]);
-
+        if(Auth::user()->role=='admin'){
         return redirect()->route('courses')->with('success','Course created successfully.');
+        }
+        else{
+            return redirect()->route('view.artist.course')->with('success','Course created successfully.');
+        }
     }
 
 
@@ -68,14 +78,23 @@ class CoursesController extends Controller
 
     public function updateCourse($update){
         $course=Course::find($update);
-
+        if(Auth::user()->role=='admin'){
         return view('pages.courses.updateCourse', compact('course'));
+        }
+        else{
+            return view('website.course.updateCoursedetails', compact('course'));
+        }
     }
 
     public function updatedCourse($updated){
         $course=Course::find($updated);
         $course->update(request()->all());
+        if(Auth::user()->role=='admin'){
         return redirect()->route('courses')->with('update', 'Updated Successfully. ');
+        }
+        else{
+        return redirect()->route('view.artist.course')->with('update', 'Updated Successfully. ');
+        }
     }
 
     public function viewCourses($detailsid){
@@ -100,7 +119,18 @@ class CoursesController extends Controller
 
     public function enrolllist($course_id){
         $list=Enroll::where('course_id', $course_id)->get('user_id');
+        if(Auth::user()->role=='admin'){
         return view('pages.courses.enroll',compact('list'));
+        }
+        else{
+            return view('website.course.artistcourseEnroll',compact('list'));
+        }
+    }
+
+    public function artistCourseshow()
+    {
+        $data=Course::where('user_id', Auth::user()->id)->get();
+        return view('website.course.viewartistCourse', compact('data'));
     }
 
 

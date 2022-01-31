@@ -4,6 +4,7 @@
 <div class="container">
 
 
+    
     <form action="{{route('blog.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group">

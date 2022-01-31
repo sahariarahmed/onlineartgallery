@@ -49,6 +49,7 @@
 
             <td>
                 <a href="{{url('/uploads/artists/'.$item->pdf)}}">PDF</a>
+                
             </td>
             <td>{{$item->user->name}}</td>
             <td>{{$item->user->email}}</td>

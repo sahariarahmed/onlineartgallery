@@ -28,12 +28,12 @@
 	<thead>
 	  <tr>
         <th scope="col">Serial No </th>
-		<th scope="col">Title     </th>
-        <th scope="col">Image     </th>
-		{{-- <th scope="col">Moto      </th> --}}
-		<th scope="col">Full Name </th>
-		{{-- <th scope="col">Email     </th>
-		<th scope="col">Blog description</th> --}}
+		<th scope="col">Image     </th>
+        <th scope="col">Title     </th>
+		<th scope="col">Moto      </th>
+		{{-- <th scope="col">Full Name </th> --}}
+		{{-- <th scope="col">Email     </th> --}}
+		<th scope="col">Blog description</th>
 		<th scope="col">Action	  </th>
 
 	  </tr>
@@ -49,15 +49,12 @@
 		</th>
 
 		<td>{{$item->title}}</td>
-		{{-- <td>{{$item->moto}}</td> --}}
-		<td>{{$item->fullname}}</td>
-		{{-- <td>{{$item->email}}</td>
-		<td>{{$item->description}}</td> --}}
+		<td>{{$item->moto}}</td>
+		{{-- <td>{{$item->email}}</td> --}}
+		<td>{{$item->description}}</td>
 		<td>
-			<a class='btn btn-primary' href="{{route('blog.details',$item->id)}}">DETAILS</a>
-			<a class='btn btn-danger' href="{{route('blog.delete',$item->id)}}">DELETE</a>
-			<a class='btn btn-warning' href="{{route('update.blog',$item->id)}}">UPDATE</a>
-
+			<a class='btn btn-danger' href="{{route('blog.deleting',$item->id)}}">DELETE</a>
+			<a class='btn btn-warning' href="{{route('updating.blog',$item->id)}}">UPDATE</a>
 		</td>
 
 	  </tr>

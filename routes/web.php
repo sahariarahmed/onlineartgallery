@@ -36,8 +36,6 @@ Route::post('/store/{blog_id}', [BlogController::class, 'storeComment'])->name('
 Route::get('/like/{blog_id}', [BlogController::class, 'like'])->name('like.store');
 
 
-
-
 Route::get('/contact', [ContactController::class, 'wContact'])->name('showcontact');
 Route::post('/contact/store', [ContactController::class, 'storeContact'])->name('contact.store');
 
@@ -51,13 +49,25 @@ Route::post('/login/store', [UserController::class, 'loginStore'])->name('store.
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
 
+
 // <!-- ARTIST -->
 Route::get('artist/create', [BlogController::class, 'createBlog'])->name('artist.blog.create');
-Route::post('/store', [BlogController::class, 'storeBlog'])->name('blog.store');
-
+Route::post('artist/blog/store', [BlogController::class, 'storeBlog'])->name('blog.store');
 Route::get('create/blog/artist', [ArtistsController::class, 'createBlogs'])->name('artistblog.create');
 Route::get('viewblog/artist', [BlogController::class, 'artistblogshow'])->name('artistblogcreate');
 Route::get('showblog/artist', [BlogController::class, 'artistblogshow'])->name('artist.blog.list');
+Route::get('blog/updating/{update_id}', [BlogController::class, 'updateBlog'])->name('updating.blog');
+Route::patch('blog/updateding/{updated_id}', [BlogController::class, 'updatedBlog'])->name('updateding.blog');
+Route::get('/deleting/{blog_id}', [BlogController::class, 'deleteBlog'])->name('blog.deleting');
+
+
+Route::get('/create', [CoursesController::class, 'createCourse'])->name('course.artist.create');
+Route::post('artist/course/store', [CoursesController::class, 'storeCourse'])->name('course.store');
+Route::get('artist/course/view', [CoursesController::class, 'artistCourseshow'])->name('view.artist.course');
+Route::get('course/update/{update_id}', [CoursesController::class, 'updateCourse'])->name('updating.course');
+Route::patch('course/updated/{updated_id}', [CoursesController::class, 'updatedCourse'])->name('updateding.course');
+Route::get('/delete/{course_id}', [CoursesController::class, 'deleteCourse'])->name('deleting.course');
+Route::get('eroll/course/{course_id}', [CoursesController::class, 'enrolllist'])->name('artist.enroll.list');
 
 
 
@@ -73,7 +83,6 @@ Route::group(['prefix'=>'admin','middleware'=>['admin', 'auth']], function(){
 Route::group(['prefix'=>'courses'], function(){
     Route::get('/', [CoursesController::class, 'index'])->name('courses');
     Route::get('/create', [CoursesController::class, 'createCourse'])->name('course.create');
-    Route::post('/store', [CoursesController::class, 'storeCourse'])->name('course.store');
     Route::get('/delete/{course_id}', [CoursesController::class, 'deleteCourse'])->name('delete.course');
     Route::get('/details/{details_id}', [CoursesController::class, 'detailsCourse'])->name('details.course');
     Route::get('/update/{update_id}', [CoursesController::class, 'updateCourse'])->name('update.course');

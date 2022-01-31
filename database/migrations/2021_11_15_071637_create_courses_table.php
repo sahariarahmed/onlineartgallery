@@ -15,15 +15,16 @@ class CreateCoursesTable extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('user_id');
             $table->string('name');
             $table->double('price');
             $table->longText('details');
             $table->string('image')->nullable();
+            $table->timestamps();
         });
     }
 
-    
+
 
     /**
      * Reverse the migrations.

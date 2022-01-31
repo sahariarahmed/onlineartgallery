@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Auth;
 
 class BlogController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index(){
         $data=Blog::all();
         return view('pages.blogs.blog',compact('data'));
@@ -75,14 +80,23 @@ class BlogController extends Controller
 
     public function updateBlog($update){
         $blog=Blog::find($update);
-
+        if(Auth::user()->role=='admin'){
         return view('pages.blogs.updateBlog', compact('blog'));
+        }
+        else{
+        return view('website.artist.updateblogArtist', compact('blog'));
+        }
     }
 
     public function updatedBlog($updated){
         $blog=Blog::find($updated);
         $blog->update(request()->all());
+        if(Auth::user()->role=='admin'){
         return redirect()->route('blog')->with('update', 'Updated Successfully. ');
+        }
+        else{
+        return redirect()->route('artist.blog.list')->with('update', 'Updated Successfully. ');
+        }
     }
 
     public function viewblog($viewid){
