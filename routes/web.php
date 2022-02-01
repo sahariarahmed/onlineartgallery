@@ -146,7 +146,9 @@ Route::get('/addimage/{gallery_id}', [GalleryController::class, 'addimage'])->na
 Route::get('/delete/{gallery_id}', [GalleryController::class, 'deleteCat'])->name('cat.delete');
 Route::get('/update/{update_id}', [GalleryController::class, 'updateCat'])->name('update.cat');
 Route::patch('/updated/{updated_id}', [GalleryController::class, 'updatedCat'])->name('updated.cat');
-// Route::get('/details/{details_id}', [GalleryController::class, 'detailsGallery'])->name('details.gallery');
+Route::get('image/details/{details_id}', [GalleryController::class, 'detailsGallery'])->name('details.gallery');
+Route::get('singleimage/delete/{image_id}', [GalleryController::class, 'deleteSingleimage'])->name('delete.singleimage');
+
 
 
 

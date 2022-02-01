@@ -106,6 +106,7 @@
             @endif
             @endif
             <li><a href="{{route('showcontact')}}">Contact</a></li>
+            <li><a class='fa fa-user' style='color: blue'></a></li>
             @if (Auth::check())
             <li><a class="btn btn-info" href="{{route('logout')}}">Logout</a></li>
 

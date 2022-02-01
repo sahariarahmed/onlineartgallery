@@ -25,7 +25,6 @@ class GalleryController extends Controller
         else{
             return view('website.gallery.createArtistgallery');
         }
-
     }
 
     public function storeCat(Request $data)
@@ -108,11 +107,12 @@ class GalleryController extends Controller
         Gallery::find($delcat)->delete();
         return redirect()->back()->with('delete','Blog deleted successfully.');
     }
-    // public function detailsGallery($detailsid){
-    //     $details=Gallery::find($detailsid);
-    //     $images=Image::where('gallery_id', $detailsid)->get();
-    //     return view('pages.gallery.detailsCat',compact('details'));
-    // }
+
+    public function detailsGallery($detailsid){
+        $details=Gallery::find($detailsid);
+        $images=Image::where('gallery_id', $detailsid)->get();
+        return view('pages.gallery.detailsCat',compact('details', 'images'));
+    }
 
     public function updateCat($update){
         $cat=Gallery::find($update);
@@ -155,6 +155,12 @@ class GalleryController extends Controller
             Gallery::find($gallery_id)->delete();
         }
         return redirect()->back();
+    }
+
+    public function deleteSingleimage($image_id)
+    {
+        Image::find($image_id)->delete();
+        return redirect()->back()->with('warning', 'Deleted Successfully. ');
     }
 
 

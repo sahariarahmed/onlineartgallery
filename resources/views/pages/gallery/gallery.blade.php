@@ -92,7 +92,7 @@
           <a class='btn btn-success' href="{{route('add.image',$item->id)}}">Add image</a>
           <a class='btn btn-danger' href="{{route('cat.delete',$item->id)}}">DELETE</a>
           <a class='btn btn-warning' href="{{route('update.cat',$item->id)}}">UPDATE</a>
-          {{-- <a class='btn btn-primary' href="{{route('details.gallery',$item->id)}}">Details</a> --}}
+          <a class='btn btn-primary' href="{{route('details.gallery',$item->id)}}">Details</a> 
         </td>
 
       </tr>
