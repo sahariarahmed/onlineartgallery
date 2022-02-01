@@ -1,11 +1,9 @@
 @extends('website.welcome')
 
-
-
 @section('content')
 <div class="container">
 
-<form action="#" method="POST" enctype="multipart/form-data">
+<form action="{{route('store.cat')}}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="form-group">
         <label for="formGroupExampleInput">Name</label>

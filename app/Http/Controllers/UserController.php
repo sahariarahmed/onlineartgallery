@@ -67,7 +67,7 @@ class UserController extends Controller
             return view('pages.users.list', compact('data','key'));
         }
 
-        $data=User::where('role','!=','admin')->get();
+        $data=User::where('role','!=','admin')->paginate(5);
         return view('pages.users.list', compact('data', 'key'));
     }
 
@@ -76,5 +76,6 @@ class UserController extends Controller
         $user->update(['status'=>request('status')]);
         return redirect()->back();
     }
+
 
 }

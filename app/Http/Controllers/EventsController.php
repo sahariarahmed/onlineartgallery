@@ -126,6 +126,30 @@ class EventsController extends Controller
         return view('website.event.showevent', compact('view'));
     }
 
+    public function currentEvents()
+    {
+        $data=Event::whereDate('sdate', '<=', date("Y-m-d"))
+            ->whereDate('edate', '>=', date("Y-m-d"))
+            ->get();
+        return view('website.event.currentevent', compact('data'));
+
+    }
+
+    public function upcomingEvents()
+    {
+        $data=Event::whereDate('sdate', '>', date("Y-m-d"))->get();
+        return view('website.event.upcomingevent', compact('data'));
+
+    }
+
+    public function pastEvents()
+    {
+        $data=Event::whereDate('edate', '<=', date("Y-m-d"))->get();
+        return view('website.event.pastevent', compact('data'));
+
+    }
+
+
 
 
 

@@ -13,6 +13,15 @@
   <p><b>Event place:</b>     {{$details->place}}</p>
   <p><b>Email:</b>     {{$details->email}}</p>
   <p><b>Description: </b>       {{$details->description}}</p>
+  <p><th><b><div class="text-center">Arts of Event:</div></b>
+<br>
+    @foreach (explode('|', $details->images) as $image)
+    <a>
+        <img style="height:180px; width:300px" src={{url('/uploads/events/'.$image)}} alt="event">
+        </a>
+    @endforeach
+
+    </th></p>
 
 
 @endsection

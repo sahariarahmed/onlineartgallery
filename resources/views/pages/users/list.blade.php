@@ -1,6 +1,4 @@
 @extends('welcome')
-
-
 @section('content')
 
 <form action="{{route('list')}}" style="margin-left: 800px" method="GET">
@@ -53,5 +51,6 @@
 
     </tbody>
   </table>
+  {{$data->links('pagination::bootstrap-4')}}
 
 @endsection

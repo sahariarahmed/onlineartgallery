@@ -108,13 +108,15 @@ class CoursesController extends Controller
     {
         $course = Course::findOrFail($course_id);
         if (Enroll::where('user_id',Auth::user()->id)->where('course_id',$course_id)->exists()) {
-            return redirect()->back()->with('message','You Have Alrady Enrolled ');
+            Enroll::where('user_id',Auth::user()->id)->where('course_id',$course_id)->delete();
+            return redirect()->back()->with('message','You Have Unenrolled the course ');
         }
+
         Enroll::create([
             'user_id'=>Auth::user()->id,
             'course_id'=>$course_id
         ]);
-        return redirect()->back()->with('message','You Have Enrolled ');
+        return redirect()->back()->with('message','You Have Enrolled the Course');
     }
 
     public function enrolllist($course_id){

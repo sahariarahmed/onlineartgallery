@@ -32,6 +32,7 @@
       <th scope="col">No</th>
       <th scope="col">Image</th>
       <th scope="col">Course Name</th>
+      <th scope="col">Edited</th>
       <th scope="col">Enrolled List</th>
       <th scope="col">Action</th>
 
@@ -46,7 +47,8 @@
         <img style="border-radius: 10px;" height="80px" width="120px;" src={{url('/uploads/courses/'.$item->image)}} class="img-responsive" alt="course">
       </th>
 
-      <td>{{$item->name}}</td>
+      <td>{{$item->name}} ( Added {{$item->created_at->diffforhumans()}})</td>
+      <td>{{$item->updated_at->diffforhumans()}}</td>
       <td> <a class='btn btn-outline-success' href="{{route('enroll.list',$item->id)}}">LIST</a> </td>
       <td>
         <a class='btn btn-primary' href="{{route('details.course',$item->id)}}">DETAILS</a>

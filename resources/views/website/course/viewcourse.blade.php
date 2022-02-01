@@ -12,10 +12,11 @@
 <form action="{{route('enroll.course',$course->id)}}" method="post">
   @csrf
   @if ($rule==true)
-  <h5><div class="btn btn-warning">Enrolled</h5>
+  <button type="submit" class="btn btn-warning">Enrolled</button>
   @else
   <button type="submit" class="btn btn-success">Enroll</button>
   @endif
+
 
 </form>
 

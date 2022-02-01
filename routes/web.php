@@ -13,11 +13,22 @@ Route::get('/', function () {
 });
 Route::get('/gallery', [GalleryController::class, 'showCats'])->name('show.cats');
 Route::get('/gallery/{gallery_id}', [GalleryController::class, 'showCat'])->name('show.cat');
-Route::get('/upload', [GalleryController::class, 'upload'])->name('upload.cat');
+Route::get('user/upload', [GalleryController::class, 'userUpload'])->name('upload.cat');
+Route::get('user/artist/gallery', [GalleryController::class, 'userGalleryshow'])->name('view.user.cat');
+Route::post('/gallery/approve/{id}', [GalleryController::class, 'galleryApprove'])->name('apply.gallery.approve');
+
+
 
 
 Route::get('/events', [EventsController::class, 'wEvents'])->name('showevents');
 Route::get('/events/{view_id}', [EventsController::class, 'viewevent'])->name('show.event');
+
+Route::get('current/events', [EventsController::class, 'currentEvents'])->name('current.showevents');
+Route::get('upcoming/events', [EventsController::class, 'upcomingEvents'])->name('upcoming.showevents');
+Route::get('past/events', [EventsController::class, 'pastEvents'])->name('past.showevents');
+
+
+
 
 Route::get('/courses', [CoursesController::class, 'wCourses'])->name('showcourses');
 Route::get('/cdetails/{details_id}', [CoursesController::class, 'viewCourses'])->name('view.course');
@@ -68,6 +79,14 @@ Route::get('course/update/{update_id}', [CoursesController::class, 'updateCourse
 Route::patch('course/updated/{updated_id}', [CoursesController::class, 'updatedCourse'])->name('updateding.course');
 Route::get('/delete/{course_id}', [CoursesController::class, 'deleteCourse'])->name('deleting.course');
 Route::get('eroll/course/{course_id}', [CoursesController::class, 'enrolllist'])->name('artist.enroll.list');
+
+
+Route::get('/create/cat', [GalleryController::class, 'createCat'])->name('create.artist.cat');
+Route::post('cat/store', [GalleryController::class, 'storeCat'])->name('store.cat');
+Route::get('artist/gallery', [GalleryController::class, 'artistGalleryshow'])->name('view.artist.cat');
+Route::get('userartist/addimage/{gallery_id}', [GalleryController::class, 'addimage'])->name('artist.add.image');
+Route::post('artist/store/{gallery_id}', [GalleryController::class, 'storeImage'])->name('store.image');
+
 
 
 
@@ -123,12 +142,12 @@ Route::group(['prefix'=>'events'], function(){
 
 Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery');
 Route::get('/create', [GalleryController::class, 'createCat'])->name('create.cat');
-Route::post('/store', [GalleryController::class, 'storeCat'])->name('store.cat');
 Route::get('/addimage/{gallery_id}', [GalleryController::class, 'addimage'])->name('add.image');
-Route::post('/store/{gallery_id}', [GalleryController::class, 'storeImage'])->name('store.image');
 Route::get('/delete/{gallery_id}', [GalleryController::class, 'deleteCat'])->name('cat.delete');
 Route::get('/update/{update_id}', [GalleryController::class, 'updateCat'])->name('update.cat');
 Route::patch('/updated/{updated_id}', [GalleryController::class, 'updatedCat'])->name('updated.cat');
+// Route::get('/details/{details_id}', [GalleryController::class, 'detailsGallery'])->name('details.gallery');
+
 
 
 

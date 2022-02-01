@@ -42,14 +42,36 @@
                 @endif
             @endauth
 
-            <li><a href="{{route('show.cats')}}">Arts</a></li>
-            <li><a href="{{route('showevents')}}">Events</a></li>
-            {{-- <li><a href="{{route('showcourses')}}">Courses</a></li> --}}
+            {{-- <li><a href="{{route('show.cats')}}">Arts</a></li> --}}
+            <li><div class="nav__item" style="margin-top: 12px; color: #777; letter-spacing: 0.2px;
+                font-family: 'Lora', serif; font-size: 18px;"><a href="{{route('show.cats')}}">Arts</a>
+                   <div class="dropdown-content">
+               @if (Auth::check())
+
+                   @if(Auth::user()->role == 'artist')
+                       <a href="{{route('create.artist.cat')}}">Create Category</a>
+                       <a href="{{route('view.artist.cat')}}">View Arts</a>
+                   @endif
+                   @endif
+                   </div>
+                       </div>
+               </li>
+
+            {{-- <li><a href="{{route('showevents')}}">Events</a></li> --}}
+            <li><div class="nav__item" style="margin-top: 12px; color: #777; letter-spacing: 0.2px;
+                font-family: 'Lora', serif; font-size: 18px;"><a href="{{route('showevents')}}">Events</a>
+                   <div class="dropdown-content">
+                    <a href="{{route('current.showevents')}}">CURRENT</a>
+                    <a href="{{route('upcoming.showevents')}}">Upcoming</a>
+                    <a href="{{route('past.showevents')}}">Past</a>
+                   </div>
+                   </div>
+            </li>
+
             <li><div class="nav__item" style="margin-top: 12px; color: #777; letter-spacing: 0.2px;
              font-family: 'Lora', serif; font-size: 18px;"><a href="{{route('showcourses')}}">Courses</a>
                 <div class="dropdown-content">
-            @if (Auth::check())
-
+                @if (Auth::check())
                 @if(Auth::user()->role == 'artist')
                     <a href="{{route('course.artist.create')}}">Create Course</a>
                     <a href="{{route('view.artist.course')}}">View Course</a>
@@ -59,7 +81,6 @@
                     </div>
             </li>
             <li><a href="{{route('showartists')}}">Artists</a></li>
-            {{-- <li><a href="{{route('showblog')}}">Blog</a></li> --}}
             <li><div class="nav__item" style="margin-top: 12px; color: #777; letter-spacing: 0.2px;
             font-family: 'Lora', serif; font-size: 18px;"><a href="{{route('showblog')}}">Blog</a>
                 <div class="dropdown-content">
@@ -73,23 +94,17 @@
                 </div>
             </li>
 
-
-            <li><div class="nav__item" style="margin-top: 12px; color: #777; letter-spacing: 1px; padding-right: 20px;
-            padding-left: 20px; font-family: 'Lora', serif;font-size: 18px;">Support
-            <div class="dropdown-content">
-
             @if (Auth::check())
-
-                @if (Auth::user()->role == 'artist')
-
-                @else
+            @if (Auth::user()->role == 'user')
+            <li><div class="nav__item" style="margin-top: 12px; color: #777; letter-spacing: 1px; padding-right: 20px;
+            padding-left: 20px; font-family: 'Lora', serif;font-size: 18px;">Apply
+            <div class="dropdown-content">
                 <a href="{{route('apply.artist')}}">Apply For Artist</a>
-                @endif
-            <a href="{{route('upload.cat')}}">Upload Category</a>
+                <a href="{{route('upload.cat')}}">Upload Category</a>
+            </div>
+            </div></li>
             @endif
-            </div>
-            </div>
-            </li>
+            @endif
             <li><a href="{{route('showcontact')}}">Contact</a></li>
             @if (Auth::check())
             <li><a class="btn btn-info" href="{{route('logout')}}">Logout</a></li>

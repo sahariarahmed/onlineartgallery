@@ -5,7 +5,7 @@
 @if(session()->has('success'))
     <p class="alert alert-success">
         {{session()->get('success')}}
-    </p>-
+    </p>>
 @endif
 
 @if(session()->has('delete'))
@@ -49,7 +49,6 @@
 
             <td>
                 <a href="{{url('/uploads/artists/'.$item->pdf)}}">PDF</a>
-                
             </td>
             <td>{{$item->user->name}}</td>
             <td>{{$item->user->email}}</td>

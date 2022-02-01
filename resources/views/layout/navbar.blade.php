@@ -21,7 +21,8 @@
                     <a href="{{route('artists')}}" class="nav-link smoothScroll">Artists
                         @if (Auth::user()->unreadnotifications()->count() > 0)
                         ({{ Auth::user()->unreadnotifications()->count() }})
-                    @endif</a>
+                        @endif
+                    </a>
                 </li>
 
                 <li class="nav-item">
