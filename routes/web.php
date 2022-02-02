@@ -1,16 +1,29 @@
 <?php
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\ArtistsController;
-use App\Http\Controllers\CoursesController;
-use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\CoursesController;
+use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\PasswordController;
+
+//Forget Password
+Route::get('/reset/Password', function () {
+    return view('auth.forgot_password');
+});
+Route::post('/password/mail', [PasswordController::class, 'send'])->name('send.mail');
+Route::get('/password/reset/{token}/{email}', [PasswordController::class, 'resetView'])->name('pass.reset');
+Route::post('/password/reset/', [PasswordController::class, 'resetPassword'])->name('reset.password');
+
+
 
 Route::get('/', function () {
     return view('website.home');
 });
+
+Route::get('dashboard/gallery', [GalleryController::class, 'dashboard'])->name('show.dashboard');
 Route::get('/gallery', [GalleryController::class, 'showCats'])->name('show.cats');
 Route::get('/gallery/{gallery_id}', [GalleryController::class, 'showCat'])->name('show.cat');
 Route::get('user/upload', [GalleryController::class, 'userUpload'])->name('upload.cat');
@@ -61,6 +74,8 @@ Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
 
 
+
+
 // <!-- ARTIST -->
 Route::get('artist/create', [BlogController::class, 'createBlog'])->name('artist.blog.create');
 Route::post('artist/blog/store', [BlogController::class, 'storeBlog'])->name('blog.store');
@@ -86,6 +101,9 @@ Route::post('cat/store', [GalleryController::class, 'storeCat'])->name('store.ca
 Route::get('artist/gallery', [GalleryController::class, 'artistGalleryshow'])->name('view.artist.cat');
 Route::get('userartist/addimage/{gallery_id}', [GalleryController::class, 'addimage'])->name('artist.add.image');
 Route::post('artist/store/{gallery_id}', [GalleryController::class, 'storeImage'])->name('store.image');
+Route::get('artist/image/details/{details_id}', [GalleryController::class, 'detailsGallery'])->name('details.artist.gallery');
+Route::get('singleimage/delete/{image_id}', [GalleryController::class, 'deleteSingleimage'])->name('artist.delete.singleimage');
+
 
 
 

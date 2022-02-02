@@ -1,10 +1,10 @@
 <style>
     .cards {
-      /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.829); */
+      box-shadow: 0 4px 8px 0 rgba(146, 142, 142, 0.829);
       transition: 0.3s;
       width: 100%;
       border-radius: 10px;
-      height: 445px;
+      height: 475px;
       /* background: rgba(4, 0, 255, 0.329); */
       display: flex;
       flex-direction: column;
@@ -36,7 +36,7 @@
 
 <div class="container">
     <div class="row text-center">
-        <h2><u>Categories of Arts</u></h2>
+        <h2><u>Categories of Art</u></h2>
     </div>
 <br>
 
@@ -46,12 +46,12 @@
 <div class="cards">
     <a href="{{route('show.cat',$item->id)}}">
         <div class="containers">
-            <div class="centered"><h3>{{$item->name}}</h3></div>
+            <div class="centered">
+                <p style="font-family:Gill Sans MT Condensed; font-size:30px; color:rgb(0, 0, 0)" ><b>{{$item->name}}</b></p>
+                <p style="font-family:Pristina; font-size:15px; color:rgb(0, 0, 0)" >by: {{$item->user->name}}</p>
+            </div>
         </div>
-    <img style="border-radius: 15px;" width="340px;" height="340px;" src={{url('/uploads/galleries/'.$item->image)}} class="card-img" alt="arts">
-
-
-
+        <img style="border-radius: 5px;" width="340px;" height="340px;" src={{url('/uploads/galleries/'.$item->image)}} class="card-img" alt="arts">
     </a>
     </div>
 @endforeach

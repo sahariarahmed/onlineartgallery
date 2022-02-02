@@ -111,7 +111,12 @@ class GalleryController extends Controller
     public function detailsGallery($detailsid){
         $details=Gallery::find($detailsid);
         $images=Image::where('gallery_id', $detailsid)->get();
+        if(Auth::user()->role=='admin'){
         return view('pages.gallery.detailsCat',compact('details', 'images'));
+        }
+        else{
+            return view('website.gallery.detailsArtistcat',compact('details', 'images'));
+        }
     }
 
     public function updateCat($update){
@@ -163,10 +168,12 @@ class GalleryController extends Controller
         return redirect()->back()->with('warning', 'Deleted Successfully. ');
     }
 
+    public function dashboard()
+    {
 
-
-
-
+        $latestcats=Gallery::latest()->paginate(3);
+        return view('website.dashboard', compact('latestcats'));
+    }
 
 
 

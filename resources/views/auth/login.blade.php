@@ -144,7 +144,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-user"></i></span>
                         </div>
-                        <input name="email" type="text" class="form-control" placeholder="username/email" required>
+                        <input name="email" type="text" class="form-control" placeholder="email" required>
 
                     </div>
                     <div class="input-group form-group">
@@ -165,9 +165,9 @@
                 <div class="d-flex justify-content-center links">
                     Don't have an account?<a href="{{route('regForm')}}">Sign Up</a>
                 </div>
-                {{-- <div class="d-flex justify-content-center">
-                    <a href="#">Forgot your password?</a>
-                </div> --}}
+                <div class="d-flex justify-content-center">
+                    <a href="{{url('/reset/Password')}}">Forgot your password?</a>
+                </div>
             </div>
         </div>
     </div>

@@ -5,7 +5,7 @@
       width: 100%;
       border-radius: 10px;
       height: 445px;
-      background: rgba(24, 22, 22, 0.897);
+      background: rgba(255, 255, 255, 0.514);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -13,7 +13,7 @@
   }
     .card-containers {
       display: grid;
-      background-image: url('/uploads/img.gif');
+      background-image: url('/uploads/img1.jpg');
       grid-template-columns: 33.33% 33.33% 33.33%;
       grid-gap: 15px;
 
@@ -35,7 +35,8 @@
       </div>
 
       <div class="row text-center">
-      <h3>{{$item->title}}</h3>
+          <br>
+        <p style="font-family:Britannic Bold; font-size:32px; color:rgb(0, 0, 0)" ><b>{{$item->title}}</b></p>
       <h4>[{{$item->sdate}}]  <b><u>to</u></b>  [{{$item->edate}}]</h4>
       <br><br><br>
       </a>

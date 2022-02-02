@@ -42,7 +42,6 @@
                 @endif
             @endauth
 
-            {{-- <li><a href="{{route('show.cats')}}">Arts</a></li> --}}
             <li><div class="nav__item" style="margin-top: 12px; color: #777; letter-spacing: 0.2px;
                 font-family: 'Lora', serif; font-size: 18px;"><a href="{{route('show.cats')}}">Arts</a>
                    <div class="dropdown-content">
@@ -57,11 +56,10 @@
                        </div>
                </li>
 
-            {{-- <li><a href="{{route('showevents')}}">Events</a></li> --}}
             <li><div class="nav__item" style="margin-top: 12px; color: #777; letter-spacing: 0.2px;
                 font-family: 'Lora', serif; font-size: 18px;"><a href="{{route('showevents')}}">Events</a>
                    <div class="dropdown-content">
-                    <a href="{{route('current.showevents')}}">CURRENT</a>
+                    <a href="{{route('current.showevents')}}">Current</a>
                     <a href="{{route('upcoming.showevents')}}">Upcoming</a>
                     <a href="{{route('past.showevents')}}">Past</a>
                    </div>
@@ -90,14 +88,13 @@
                     <a href="{{route('artist.blog.list')}}">Blog List</a>
                     @endif
                 @endif
-
                 </div>
             </li>
 
             @if (Auth::check())
             @if (Auth::user()->role == 'user')
             <li><div class="nav__item" style="margin-top: 12px; color: #777; letter-spacing: 1px; padding-right: 20px;
-            padding-left: 20px; font-family: 'Lora', serif;font-size: 18px;">Apply
+            padding-left: 20px; font-family: 'Lora', serif;font-size: 18px;">Support
             <div class="dropdown-content">
                 <a href="{{route('apply.artist')}}">Apply For Artist</a>
                 <a href="{{route('upload.cat')}}">Upload Category</a>
@@ -106,7 +103,7 @@
             @endif
             @endif
             <li><a href="{{route('showcontact')}}">Contact</a></li>
-            <li><a class='fa fa-user' style='color: blue'></a></li>
+
             @if (Auth::check())
             <li><a class="btn btn-info" href="{{route('logout')}}">Logout</a></li>
 

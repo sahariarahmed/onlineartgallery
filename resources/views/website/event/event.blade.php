@@ -1,11 +1,11 @@
 <style>
   .cards {
-    box-shadow: 0 4px 8px 0 rgba(204, 16, 16, 0.829);
+    box-shadow: 0 4px 8px 0 rgba(221, 42, 42, 0.829);
     transition: 0.3s;
     width: 100%;
     border-radius: 10px;
     height: 445px;
-    background: rgba(24, 22, 22, 0.897);
+    background: rgba(224, 224, 224, 0.877);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -31,12 +31,13 @@
     <div class="cards">
     <a href="{{route('show.event',$item->id)}}">
     <div>
-    <img style="border-radius: 10px;" width="180px;" height="150px;" src={{url('/uploads/events/'.$item->image)}} class="card-img" alt="events">
+    <img style="border-radius: 10px;" width="280px;" height="200px;" src={{url('/uploads/events/'.$item->image)}} class="card-img" alt="events">
     </div>
 
     <div class="row text-center">
-    <h3>{{$item->title}}</h3>
-    <h4>[{{$item->sdate}}]  <b><u>to</u></b>  [{{$item->edate}}]</h4>
+        <br>
+    <p style="font-family:MingLiU_HKSCS-ExtB; font-size:32px; color:rgb(0, 0, 0)" ><b>{{$item->title}}</b></p>
+    <h4>[{{$item->sdate}}]  <b>to</b>  [{{$item->edate}}]</h4>
     <br><br><br>
     </a>
     </div>

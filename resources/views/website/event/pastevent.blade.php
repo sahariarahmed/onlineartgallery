@@ -1,11 +1,11 @@
 <style>
     .cards {
-      box-shadow: 0 4px 8px 0 rgba(204, 16, 16, 0.829);
+      box-shadow: 0 4px 8px 0 rgba(112, 112, 112, 0.829);
       transition: 0.3s;
       width: 100%;
       border-radius: 10px;
       height: 445px;
-      background: rgba(24, 22, 22, 0.897);
+      background: rgba(255, 255, 255, 0.897);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -13,10 +13,9 @@
   }
     .card-containers {
       display: grid;
-      background-image: url('/uploads/img.gif');
+      /* background-image: url('/uploads/img.gif'); */
       grid-template-columns: 33.33% 33.33% 33.33%;
       grid-gap: 15px;
-
   }
   </style>
 
@@ -42,6 +41,7 @@
       </div>
       </div>
   @endforeach
+
   </div>
   @endsection
 
