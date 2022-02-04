@@ -29,8 +29,8 @@
 
               <div class="col-md-12 col-sm-12">
                    <h1>Hello! This is an ARTstairs</h1>
-                   <h4>A first class online art gallery</h4>
-                   <a href={{route('show.dashboard')}} class="smoothScroll btn btn-default">Discover More</a>
+                   <h4>An art gallery to fresh your mind...</h4>
+                   <a href={{route('show.dashboard')}} class="smoothScroll btn btn-default">Discover</a>
               </div>
 
          </div>

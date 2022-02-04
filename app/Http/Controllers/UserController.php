@@ -1,7 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Artist;
+use Carbon\Carbon;
+use App\Models\Blog;
 use App\Models\User;
+use App\Models\Event;
+use App\Models\Image;
+use App\Models\Course;
+use App\Models\Gallery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -41,7 +49,7 @@ class UserController extends Controller
                 return redirect()->back()->with('message', 'Sorry, You are blocked 😭');
             }
             if(Auth::user()->role=='admin'){
-                return redirect('/admin')->with('admin', 'Admin login success. ');
+                return redirect('/admin/dashboard')->with('admin', 'Admin login success. ');
             }
             else{
                  return redirect('/')->with('login', 'Successfully logged in. ');
@@ -76,6 +84,33 @@ class UserController extends Controller
         $user->update(['status'=>request('status')]);
         return redirect()->back();
     }
+
+    public function dashboard()
+    {
+        $gallery=Gallery::all()->count();
+        $images=Image::all()->count();
+        $events=Event::all()->count();
+        $courses=Course::all()->count();
+        $blogs=Blog::all()->count();
+        $artists=User::where('role','!=','admin')->where('role','!=','user')->count();
+        $users=User::where('role','!=','admin')->count();
+        return view('pages.dashboard', compact('gallery', 'images', 'events', 'courses', 'blogs', 'artists', 'users'));
+    }
+
+    public function report()
+    {
+        $gallery=Gallery::where('created_at','>=', Carbon::now()->subDays(30))->get();
+        $images=Image::where('created_at','>=', Carbon::now()->subDays(30))->get();
+        $events=Event::where('created_at','>=', Carbon::now()->subDays(30))->get();
+        $courses=Course::where('created_at','>=', Carbon::now()->subDays(30))->get();
+        $blogs=Blog::where('created_at','>=', Carbon::now()->subDays(30))->get();
+        $artists=User::where('created_at', '>=', Carbon::now()->subDays(30))->where('role','!=','admin')->where('role','!=','user')->get();
+        $users=User::where('created_at', '>=', Carbon::now()->subDays(30))->where('role','!=','admin')->where('role','!=','artist')->get();
+
+        return view('pages.report', compact('courses', 'users', 'gallery', 'images', 'events', 'blogs', 'artists'));
+
+    }
+
 
 
 }

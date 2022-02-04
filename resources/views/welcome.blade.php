@@ -26,23 +26,22 @@
 
 
 
-    
+
     <!-- BODY -->
      <section class="about section" id="about">
           <div class="container">
-
+              
      @if(session()->has('admin'))
      <p class="alert alert-success">
      {{session()->get('admin')}}
      </p>
-     @endif    
-
+     @endif
             @yield('content')
 
           </div>
      </section>
 
-    
+
 
     <!-- FOOTER -->
      <footer class="site-footer">
@@ -51,24 +50,24 @@
 
                     <div class="ml-auto col-lg-4 col-md-5">
                         <p class="copyright-text">Copyright &copy; 2021
-                        
+
                         <br>Design: <a href="https://github.com/sahariarahmed">Tonmoy</a></p>
                     </div>
 
                     <div class="d-flex justify-content-center mx-auto col-lg-5 col-md-7 col-12">
                         <p class="mr-4">
                             <i class="fa fa-envelope-o mr-1"></i>
-                            <a href="#">sahariarahmed11@gmail.com</a>
+                            <a href="https://gmail.com">sahariarahmed11@gmail.com</a>
                         </p>
 
                         <p><i class="fa fa-phone mr-1"></i> 01625478936</p>
                     </div>
-                    
+
                </div>
           </div>
      </footer>
 
-    
+
 
      <!-- SCRIPTS -->
      <script src="js/jquery.min.js"></script>

@@ -29,9 +29,9 @@
             @csrf
             @method('PATCH')
             @if ($item->status == 'active')
-              <button class="btn btn-warning" type="submit" name="status" value="block">Response </button>
+              <button class="btn btn-success" type="submit" name="status" value="block"><b>Mark as read✔️</b></button>
             @else
-              <button class="btn btn-outline-success" type="submit" name="status" value="active"> Responded </button>
+              <button class="btn btn-outline-warning" type="submit" name="status" value="active"> Responded </button>
             @endif
           </form>
           <a class='btn btn-outline-danger' href="{{route('contact.delete',$item->id)}}">DELETE</a>

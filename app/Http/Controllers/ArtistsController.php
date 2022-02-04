@@ -67,7 +67,11 @@ class ArtistsController extends Controller
     }
 
     public function deleteArtist($delartist){
-        Artist::find($delartist)->delete();
+        $aDelete=Artist::find($delartist);
+        $aDelete->delete();
+        User::find($aDelete->user_id)->update([
+            'role'=>'user',
+        ]);
         return redirect()->back()->with('delete','Artist deleted successfully.');
     }
 

@@ -117,6 +117,10 @@ Route::group(['prefix'=>'admin','middleware'=>['admin', 'auth']], function(){
         return view('welcome');
     });
 
+Route::get('/dashboard', [UserController::class, 'dashboard'])->name('admin.dashboard');
+Route::get('/report', [UserController::class, 'report'])->name('report.all');
+
+
 Route::group(['prefix'=>'courses'], function(){
     Route::get('/', [CoursesController::class, 'index'])->name('courses');
     Route::get('/create', [CoursesController::class, 'createCourse'])->name('course.create');

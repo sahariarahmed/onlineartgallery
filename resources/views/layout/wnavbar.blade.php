@@ -111,6 +111,14 @@
             <li><a class="btn btn-info" href="{{route('login')}}">Login</a></li>
             @endif
 
+            @if (Auth::check())
+            @if (Auth::user()->role == 'user')
+            <li><p style="font-family:MingLiU_HKSCS-ExtB; font-size:1vmax; color:rgb(0, 0, 0)" ><b>[user]</b></p></li>
+            @elseif (Auth::user()->role == 'artist')
+            <li><p style="font-family:MingLiU_HKSCS-ExtB; font-size:1vmax; color:rgb(0, 0, 0)" ><b>[artist]</b></p></li>
+            @endif
+            @endif
+
         </ul>
         </div>
 

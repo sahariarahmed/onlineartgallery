@@ -39,8 +39,8 @@ class EventsController extends Controller
     public function storeEvent(Request $data){
         $data->validate([
             'title'=>'required',
-            'sdate'=>'required',
-            'edate'=>'required',
+            'sdate'=>'required|date|date_format:Y-m-d|after:yesterday',
+            'edate'=>'required|date|date_format:Y-m-d|after:yesterday',
             'name'=>'required',
             'email'=>'required',
             'place'=>'required',
@@ -148,12 +148,6 @@ class EventsController extends Controller
         return view('website.event.pastevent', compact('data'));
 
     }
-
-
-
-
-
-
 
 
 }
