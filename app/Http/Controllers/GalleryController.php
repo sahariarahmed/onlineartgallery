@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ArtComment;
 use Illuminate\Http\Request;
 use App\Models\Gallery;
 use App\Models\Image;
@@ -99,8 +100,9 @@ class GalleryController extends Controller
     public function showCat($gallery_id)
     {
         $images=Image::where('gallery_id', $gallery_id)->get();
+        $comments=ArtComment::where('gallery_id', $gallery_id )->get();
         $view=Gallery::find($gallery_id);
-        return view('website.gallery.showcat', compact('images', 'view'));
+        return view('website.gallery.showcat', compact('images', 'view', 'comments' ));
     }
 
     public function deleteCat($delcat){
@@ -111,6 +113,7 @@ class GalleryController extends Controller
     public function detailsGallery($detailsid){
         $details=Gallery::find($detailsid);
         $images=Image::where('gallery_id', $detailsid)->get();
+
         if(Auth::user()->role=='admin'){
         return view('pages.gallery.detailsCat',compact('details', 'images'));
         }
@@ -173,6 +176,23 @@ class GalleryController extends Controller
 
         $latestcats=Gallery::latest()->paginate(3);
         return view('website.dashboard', compact('latestcats'));
+    }
+
+    public function makeComment($gallery_id)
+    {
+
+    }
+
+    public function storeArtComment($id)
+    {
+        $view=ArtComment::create([
+            'gallery_id'=>$id,
+            'user_id'=>Auth::user()->id,
+            'body'=>request()->body,
+        ]);
+
+        return redirect()->back();
+
     }
 
 

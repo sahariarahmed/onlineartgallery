@@ -14,14 +14,14 @@
         <label for="formGroupExampleInput">Moto</label>
         <input name="moto" type="text" class="form-control" id="formGroupExampleInput" value="{{$blog->moto}}" placeholder="Add Moto Here">
       </div>
-      <div class="form-group">
+      {{-- <div class="form-group">
         <label for="formGroupExampleInput">Full name</label>
         <input name="fullname" type="text" class="form-control" id="formGroupExampleInput" value="{{$blog->fullname}}" placeholder="Name" required>
       </div>
       <div class="form-group">
         <label for="inputEmail4">Email</label>
         <input name="email" type="email" class="form-control" id="inputEmail4" value="{{$blog->email}}" placeholder="Email" required>
-      </div>
+      </div> --}}
       <div class="form-group">
         <label for="formGroupExampleInput2">Blog description</label>
         <input name="description" type="text" class="form-control" id="formGroupExampleInput2" value="{{$blog->description}}"  placeholder="Describe here" autocomplete="off" spellcheck="false" required>
@@ -36,5 +36,5 @@
 
 
 </form>
-    
+
 @endsection

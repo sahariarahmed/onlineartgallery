@@ -4,7 +4,7 @@
 <div class="container">
 
 
-    
+
     <form action="{{route('blog.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
@@ -15,14 +15,14 @@
             <label for="formGroupExampleInput">Moto</label>
             <input name="moto" type="text" class="form-control" id="formGroupExampleInput" placeholder="Add Moto Here">
           </div>
-          <div class="form-group">
+          {{-- <div class="form-group">
             <label for="formGroupExampleInput">Full name</label>
             <input name="fullname" type="text" class="form-control" id="formGroupExampleInput" placeholder="Name" required>
           </div>
           <div class="form-group">
             <label for="inputEmail4">Email</label>
             <input name="email" type="email" class="form-control" id="inputEmail4" placeholder="Email" required>
-          </div>
+          </div> --}}
           <div class="form-group">
             <label for="formGroupExampleInput2">Blog description</label>
             <textarea input name="description" type="text" class="form-control" id="formGroupExampleInput2"  placeholder="Describe here" required autocomplete="off" spellcheck="false" required></textarea>

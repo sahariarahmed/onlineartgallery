@@ -9,6 +9,10 @@
 
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-lg-auto">
+                {{-- <li class="nav-item">
+                    <a href="{{route('sale')}}" class="nav-link smoothScroll">Arts for sale</a>
+                </li> --}}
+
                 <li class="nav-item">
                     <a href="{{route('gallery')}}" class="nav-link smoothScroll">Gallery</a>
                 </li>

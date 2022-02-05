@@ -8,6 +8,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\PasswordController;
+use App\Http\Controllers\SaleController;
 
 //Forget Password
 Route::get('/reset/Password', function () {
@@ -29,8 +30,8 @@ Route::get('/gallery/{gallery_id}', [GalleryController::class, 'showCat'])->name
 Route::get('user/upload', [GalleryController::class, 'userUpload'])->name('upload.cat');
 Route::get('user/artist/gallery', [GalleryController::class, 'userGalleryshow'])->name('view.user.cat');
 Route::post('/gallery/approve/{id}', [GalleryController::class, 'galleryApprove'])->name('apply.gallery.approve');
-
-
+Route::get('/comment/{id}', [GalleryController::class, 'makeComment'])->name('make.comment');
+Route::post('comment/store/{id}', [GalleryController::class, 'storeArtComment'])->name('store.art.comment');
 
 
 Route::get('/events', [EventsController::class, 'wEvents'])->name('showevents');
@@ -39,7 +40,6 @@ Route::get('/events/{view_id}', [EventsController::class, 'viewevent'])->name('s
 Route::get('current/events', [EventsController::class, 'currentEvents'])->name('current.showevents');
 Route::get('upcoming/events', [EventsController::class, 'upcomingEvents'])->name('upcoming.showevents');
 Route::get('past/events', [EventsController::class, 'pastEvents'])->name('past.showevents');
-
 
 
 
@@ -62,6 +62,14 @@ Route::get('/like/{blog_id}', [BlogController::class, 'like'])->name('like.store
 
 Route::get('/contact', [ContactController::class, 'wContact'])->name('showcontact');
 Route::post('/contact/store', [ContactController::class, 'storeContact'])->name('contact.store');
+
+
+
+// Route::get('/user/sale', [SaleController::class, 'sale'])->name('user.sale');
+
+
+
+
 
 
 
@@ -119,6 +127,12 @@ Route::group(['prefix'=>'admin','middleware'=>['admin', 'auth']], function(){
 
 Route::get('/dashboard', [UserController::class, 'dashboard'])->name('admin.dashboard');
 Route::get('/report', [UserController::class, 'report'])->name('report.all');
+
+
+// Route::get('/admin/sale', [SaleController::class, 'sale'])->name('sale');
+// Route::get('/admin/sale/add/{image_id}', [SaleController::class, 'addforsale'])->name('addforsale');
+
+
 
 
 Route::group(['prefix'=>'courses'], function(){

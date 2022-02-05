@@ -37,9 +37,9 @@
 				src=" {{url('/uploads/artists/'.$item->image)}}" alt="artist">
         </div>
 
-			<h2>{{$item->fname}} {{$item->lname}}</h2>
+			<h2>{{$item->user->name}}</h2>
 				<p>{{$item->country}}</p>
-				<p>{{$item->email}}</p>
+				<p>{{$item->user->email}}</p>
 			<br><br><br>
     </a>
 </div>

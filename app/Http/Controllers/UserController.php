@@ -89,12 +89,14 @@ class UserController extends Controller
     {
         $gallery=Gallery::all()->count();
         $images=Image::all()->count();
-        $events=Event::all()->count();
+        $cEvents=Event::whereDate('sdate', '<=', date("Y-m-d"))->whereDate('edate', '>=', date("Y-m-d"))->get()->count();
+        $uEvents=Event::whereDate('sdate', '>', date("Y-m-d"))->get()->count();
+        $pEvents=Event::whereDate('edate', '<=', date("Y-m-d"))->get()->count();
         $courses=Course::all()->count();
         $blogs=Blog::all()->count();
         $artists=User::where('role','!=','admin')->where('role','!=','user')->count();
         $users=User::where('role','!=','admin')->count();
-        return view('pages.dashboard', compact('gallery', 'images', 'events', 'courses', 'blogs', 'artists', 'users'));
+        return view('pages.dashboard', compact('gallery', 'images', 'uEvents', 'cEvents', 'pEvents', 'courses', 'blogs', 'artists', 'users'));
     }
 
     public function report()

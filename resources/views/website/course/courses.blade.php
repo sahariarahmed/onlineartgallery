@@ -6,8 +6,8 @@
 
 <div class="container">
 @foreach ($data as $item)
-  <br><br>   
-  
+  <br><br>
+
     <div class="col mt-5">
       <div class="card mb-3" style="max-width: 620px;">
         <div class="row no-gutters">
@@ -26,11 +26,11 @@
       </div>
     </div>
 
-    
+
     <br><br>
 @endforeach
 
-<input class="btn btn-primary mr-5" type="button" onClick="PrintDiv('CoursePrint');" value="Print">
+{{-- <input class="btn btn-primary mr-5" type="button" onClick="PrintDiv('CoursePrint');" value="Print"> --}}
 </div>
 </div>
 
@@ -38,7 +38,7 @@
 
 @endsection
 
-<script language="javascript">
+{{-- <script language="javascript">
   function PrintDiv(divName) {
       var printContents = document.getElementById(divName).innerHTML;
       var originalContents = document.body.innerHTML;
@@ -46,4 +46,4 @@
       window.print();
       document.body.innerHTML = originalContents;
   }
-</script>
+</script> --}}

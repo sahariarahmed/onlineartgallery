@@ -26,6 +26,22 @@
 
 @endforeach
 
+<br><br>
+<form action="{{route('store.art.comment', $view->id)}}" method="POST" enctype="multipart/form-data">
+    @csrf
+    <div class="container">
+        <p v-for="items in item" v-text="items"></p>
+      <textarea input name="body" type="text" class="input" placeholder="Write a comment" v-model="newItem" @keyup.enter="addItem()"></textarea>
+          <button v-on:click="addItem()" class='primaryContained float-right' type="submit">Add Comment</button>
+    </div>
+</form>
+
+
+@foreach ($comments as $item)
+
+    <p><b>{{$item->user->name}}</b>: {{$item->body}}</p>
+    <h4>{{$item->created_at->diffforhumans()}}</h4>
+@endforeach
 
 <br><br>
 </div>

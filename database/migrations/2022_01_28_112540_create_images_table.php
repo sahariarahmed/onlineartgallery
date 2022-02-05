@@ -16,9 +16,11 @@ class CreateImagesTable extends Migration
         Schema::create('images', function (Blueprint $table) {
             $table->id();
             $table->string('user_id');
-            $table->timestamps();
+            $table->string('status')->default('unsold');
+            $table->string('price')->nullable();
             $table->unsignedBigInteger('gallery_id');
             $table->string('image');
+            $table->timestamps();
         });
     }
 

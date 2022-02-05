@@ -10,11 +10,11 @@
 			<img style="border-radius: 4px;" height="35%;", width="45%;"
 				src=" {{url('/uploads/artists/'.$view->image)}}" alt="artist">
 
-			    <h3>{{$view->fname}} {{$view->lname}}</h3>
-                <h4>{{$view->email}}</h4>
-				<p>{{$view->contact}}</p>
-				<p>{{$view->country}}</p>
-				<p>{{$view->city}}</p>
+			    <h3>Artist Name: {{$view->user->name}}</h3>
+                <h4>Email: {{$view->user->email}}</h4>
+				<p>Contact no: {{$view->contact}}</p>
+				<p>This artist is from: {{$view->city}} , {{$view->country}}</p>
+
 
 				</div>
 			</div>

@@ -63,12 +63,13 @@
 <div class="container">
 <h4>This Event has been hosted by "<u>{{$view->name}}</u>".</h4><br><br>
 <h3>Event time: <b><u>{{$view->sdate}}</u></b> to <b><u>{{$view->edate}}</u></b>.</h3>
+<br>
 <h5>This event is helding at "{{$view->place}}"</h5>
 <br><br>
 <h2>Details:</h2>
 <div class="h10">{{$view->description}} </div><br><br>
 
-
+<h3><b>Selected Works: </b></h3>
 <div class="card-containers">
 @foreach (explode('|', $view->images) as $image)
 <div class="cards">
@@ -78,8 +79,6 @@
 </div>
  @endforeach
 </div>
-
-
 
 <br><br><br><br>
 <div class="row text-center"><h6>To contact with the host you can use this mail: <u>{{$view->email}}</u></h6>

@@ -63,6 +63,8 @@
 
 <div class="text-center">
 <a href={{route('create.cat')}} class="btn btn-outline-success">Create a New Category</a>
+<br>
+<h1>Categories Available</h1>
 </div><br>
 
 <table class="table">

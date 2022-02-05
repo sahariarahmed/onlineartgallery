@@ -25,13 +25,12 @@ class ArtistsController extends Controller
 
     public function storeArtists(Request $data)
     {
-        // $data->validate([
-        //     'fname'=>'required',
-        //     'lname'=>'required',
-        //     'email'=>'required',
-        //     'contact'=>'required',
-        //     'country'=>'required',
-        // ]);
+        $data->validate([
+            'contact'=>'required',
+            'contact'=>'required',
+            'country'=>'required',
+            'file'=>'required|mimes:pdf|max:10000',
+        ]);
         $image_name=null;
 
                 if($data->hasFile('image'))
@@ -105,6 +104,13 @@ class ArtistsController extends Controller
 
     public function storeApply(Request $data)
     {
+        $data->validate([
+            'contact'=>'required',
+            'city'=>'required',
+            'country'=>'required',
+            'pdf'=>'required|mimes:pdf|max:10000',
+        ]);
+
              $image_name=null;
                 if($data->hasFile('image')){
                     $image_name=date('Ymdhis') .'.'. $data->file('image')->getClientOriginalExtension();

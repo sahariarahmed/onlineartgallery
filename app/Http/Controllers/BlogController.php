@@ -14,7 +14,7 @@ class BlogController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     public function index(){
         $data=Blog::all();
         return view('pages.blogs.blog',compact('data'));
@@ -29,8 +29,7 @@ class BlogController extends Controller
 
         $data->validate([
             'title'=>'required',
-            'fullname'=>'required',
-            'email'=>'required',
+            'moto'=>'required',
             'description'=>'required',
         ]);
         $image_name=null;
@@ -46,13 +45,10 @@ class BlogController extends Controller
             'user_id'=>Auth::user()->id,
             'title'=>$data->title,
             'moto'=>$data->moto,
-            'moto'=>$data->moto,
-            'fullname'=>$data->fullname,
-            'email'=>$data->email,
+            'fullname'=>Auth::user()->name,
+            'email'=>Auth::user()->email,
             'description'=>$data->description,
             'image'=>$image_name,
-
-
         ]);
         if(Auth::user()->role=='admin'){
             return redirect()->route('blog')->with('success','Blog created successfully.');

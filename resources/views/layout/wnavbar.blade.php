@@ -42,6 +42,8 @@
                 @endif
             @endauth
 
+            {{-- <li><a href="{{route('user.sale')}}">Arts for sale</a></li> --}}
+
             <li><div class="nav__item" style="margin-top: 12px; color: #777; letter-spacing: 0.2px;
                 font-family: 'Lora', serif; font-size: 18px;"><a href="{{route('show.cats')}}">Arts</a>
                    <div class="dropdown-content">

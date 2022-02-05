@@ -17,7 +17,7 @@ class CreateGalleriesTable extends Migration
             $table->id();
             $table->string('user_id');
             $table->string('name');
-            $table->string('details');
+            $table->longText('details');
             $table->string('image');
             $table->string('status')->default('pending');
             $table->timestamps();

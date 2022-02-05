@@ -27,8 +27,8 @@
 	<thead>
 	  <tr>
         <th scope="col">Serial No </th>
-		<th scope="col">Title     </th>
-        <th scope="col">Image     </th>
+		<th scope="col">Image     </th>
+        <th scope="col">Title     </th>
 		{{-- <th scope="col">Moto      </th> --}}
 		<th scope="col">Full Name </th>
 		{{-- <th scope="col">Email     </th>
@@ -38,15 +38,15 @@
 	  </tr>
 	</thead>
 	<tbody>
-  
+
   @foreach ($data as $key=>$item)
 	  <tr>
 		<td>{{$key+1}}</td>
-		<th>   
+		<th>
 		  <img style="border-radius: 10px;" height="80px" width="120px;" src={{url('/uploads/blog/'.$item->image)}}
                  class="img-responsive" alt="blog">
 		</th>
-  
+
 		<td>{{$item->title}}</td>
 		{{-- <td>{{$item->moto}}</td> --}}
 		<td>{{$item->fullname}}</td>
@@ -58,10 +58,10 @@
 			<a class='btn btn-warning' href="{{route('update.blog',$item->id)}}">UPDATE</a>
 
 		</td>
-			
+
 	  </tr>
   @endforeach
-	  
+
 	</tbody>
   </table>
 
